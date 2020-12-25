@@ -24,7 +24,9 @@ public class PositionController : MonoBehaviour
         OnX *= speed; OnY *= speed;
         OnX *= Time.deltaTime; OnY *= Time.deltaTime;
 
-        Vector3 Position_Now = new Vector2(PlayerTransform.position.x + OnX, PlayerTransform.position.y + OnY);
+        Vector3 Position_Now = new Vector3(PlayerTransform.position.x + OnX, 
+                                           PlayerTransform.position.y + OnY, 
+                                           PlayerTransform.position.z);
 
         PlayerTransform.position = Position_Now;
         Position_Now.z = CameraTransform.position.z;
