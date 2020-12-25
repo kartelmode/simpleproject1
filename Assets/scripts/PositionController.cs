@@ -19,9 +19,9 @@ public class PositionController : MonoBehaviour
         PlayerSpriteRenderer.flipX = ToRight;
     }
 
-    public void Move(float OnX, float OnY)
+    private void Move(float OnX, float OnY)
     {
-        OnX *= speed; OnY *= speed;
+        OnX *= speed;          OnY *= speed;
         OnX *= Time.deltaTime; OnY *= Time.deltaTime;
 
         Vector3 Position_Now = new Vector3(PlayerTransform.position.x + OnX, 
