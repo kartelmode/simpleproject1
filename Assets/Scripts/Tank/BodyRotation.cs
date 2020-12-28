@@ -4,30 +4,22 @@ namespace simpleproject.Tank.Body.Rotation
 {
     public class BodyRotation : MonoBehaviour
     {
-      /*  [SerializeField] private int _rotationUp;
-        [SerializeField] private int _rotationDown;
-        [SerializeField] private int _rotationLeft;
-        [SerializeField] private int _rotationRight;*/
         [SerializeField] private Transform _bodyTransform;
         [SerializeField] private float _rotationSpeed;
-        //[SerializeField] private int _rotateNow;
+        [SerializeField] private float _smooth;
 
         public void Rotate(float ToLeft)
         {
             ToLeft *= _rotationSpeed;
             ToLeft *= Time.deltaTime;
 
-            Debug.Log("ToLeft -> ");
-            Debug.Log(ToLeft);
+            Vector3 NewRotation = new Vector3(_bodyTransform.eulerAngles.x,
+                                                    _bodyTransform.eulerAngles.y,
+                                                    _bodyTransform.eulerAngles.z + ToLeft);
 
-            Quaternion NewRotation = new Quaternion(_bodyTransform.rotation.x,
-                                                    _bodyTransform.rotation.y,
-                                                    _bodyTransform.rotation.z + ToLeft,
-                                                    _bodyTransform.rotation.w);
-
-            _bodyTransform.rotation = Quaternion.Lerp(_bodyTransform.rotation,
+            _bodyTransform.eulerAngles = Vector3.Lerp(_bodyTransform.eulerAngles,
                                                       NewRotation,
-                                                      1.0f);
+                                                      _smooth * Time.deltaTime);
         }
     }
 }

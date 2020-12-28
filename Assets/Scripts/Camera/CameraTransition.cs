@@ -1,18 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CameraTransition : MonoBehaviour
+namespace simpleproject.MainCamera.Transition
 {
-    // Start is called before the first frame update
-    void Start()
+    public class CameraTransition : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private Transform _cameraTransform;
+        [SerializeField] private float _transitionSpeed;
+        [SerializeField] private float _smooth;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void Transit(float ToLeft, float ToUp)
+        {
+            ToLeft *= _transitionSpeed; ToUp *= _transitionSpeed;
+            ToLeft *= Time.deltaTime; ToUp *= Time.deltaTime;
+
+            Vector3 NewPosition = new Vector3(_cameraTransform.position.x + ToLeft,
+                                              _cameraTransform.position.y + ToUp,
+                                              _cameraTransform.position.z);
+
+            _cameraTransform.position = Vector3.Lerp(_cameraTransform.position,
+                                                     NewPosition,
+                                                     _smooth * Time.deltaTime);
+        }
     }
 }
