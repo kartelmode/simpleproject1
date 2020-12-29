@@ -739,5 +739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: decfbfd89a9085d46b252db1871268a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bodyTransform: {fileID: 74096356}
   _tankRigidBody: {fileID: 2043406249}
   _transitionSpeed: 0.1

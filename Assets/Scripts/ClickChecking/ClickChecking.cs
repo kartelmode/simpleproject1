@@ -16,7 +16,7 @@ namespace simpleproject.Clicks.Checking
             float ToLeft = Input.GetAxis("Horizontal");
             float ToUp = Input.GetAxis("Vertical");
 
-            _tankTransition.Transit(ToLeft, ToUp);
+            _tankTransition.Transit(ToUp);
             _cameraTransition.Transit(ToLeft, ToUp);
 
             _bodyRotation.Rotate(ToLeft);

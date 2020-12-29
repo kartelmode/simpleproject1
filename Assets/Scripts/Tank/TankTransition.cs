@@ -4,15 +4,34 @@ namespace simpleproject.Tank.Transition
 {
     public class TankTransition : MonoBehaviour
     {
+        [SerializeField] private Transform _bodyTransform;
         [SerializeField] private Rigidbody2D _tankRigidBody;
         [SerializeField] private float _transitionSpeed;
 
-        public void Transit(float ToLeft, float ToUp)
+        private float FromDegreedsToRadian(float alpha)
         {
-            ToLeft *= _transitionSpeed; ToUp *= _transitionSpeed;
-            ToLeft *= Time.deltaTime; ToUp *= Time.deltaTime;
+            return alpha * Mathf.PI / 180.0f;
+        }
 
-            _tankRigidBody.AddForce(new Vector2(ToLeft, ToUp));
+        private bool ToTheRightOfTank(float alpha)
+        {
+            return (alpha > Mathf.PI);
+        }
+
+        public void Transit(float direction)
+        {
+            direction *= _transitionSpeed;
+            direction *= Time.deltaTime;
+
+            float alpha = FromDegreedsToRadian(_bodyTransform.eulerAngles.z);
+
+            if (ToTheRightOfTank(alpha))
+                alpha = alpha - 2.0f * Mathf.PI;
+
+            Debug.Log(alpha);
+
+            _tankRigidBody.AddForce(new Vector2(-direction * Mathf.Sin(alpha), 
+                                                 direction * Mathf.Cos(alpha)));
         }
     }
 }
