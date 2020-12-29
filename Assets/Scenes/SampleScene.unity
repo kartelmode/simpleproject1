@@ -529,6 +529,7 @@ MonoBehaviour:
   _smooth: 100
   _towerTransform: {fileID: 603456119}
   _tankPosition: {fileID: 2043406250}
+  _halfCircle: 180
 --- !u!1 &1553854354
 GameObject:
   m_ObjectHideFlags: 0
