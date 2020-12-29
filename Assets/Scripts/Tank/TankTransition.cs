@@ -28,8 +28,6 @@ namespace simpleproject.Tank.Transition
             if (ToTheRightOfTank(alpha))
                 alpha = alpha - 2.0f * Mathf.PI;
 
-            Debug.Log(alpha);
-
             _tankRigidBody.AddForce(new Vector2(-direction * Mathf.Sin(alpha), 
                                                  direction * Mathf.Cos(alpha)));
         }

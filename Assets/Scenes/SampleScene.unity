@@ -259,8 +259,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraTransform: {fileID: 519420032}
-  _transitionSpeed: 50
-  _smooth: 10
+  _tankTransform: {fileID: 2043406250}
+  _speed: 5
+  _offsetX: 10
+  _offsetY: 10
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
