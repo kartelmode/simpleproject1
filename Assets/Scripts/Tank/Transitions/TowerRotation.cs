@@ -18,7 +18,7 @@ namespace simpleproject.Tank.Tower.Rotation
             double HalfCircle = 180.0;
 
             Vector3 MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+             
             Vector3 MousePositionRelativelyTankPosition = MousePosition - _tankPosition.position;
 
             double alpha = (Mathf.PI / 2 - Mathf.Atan(MousePositionRelativelyTankPosition.x /
