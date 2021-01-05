@@ -2,7 +2,6 @@
 
 namespace simpleproject.Pools.Loads
 {
-    [ExecuteAlways]
     public abstract class PoolableObject : MonoBehaviour
     {
         [SerializeField] private int _hideDeltaTime;
@@ -17,7 +16,7 @@ namespace simpleproject.Pools.Loads
             ReturnToThePool();
         }
 
-        public abstract void Use(Transform _towerTranform);
+        public abstract void Use(Transform _towerTransform);
         protected abstract void ReturnToThePool();
     }
 }

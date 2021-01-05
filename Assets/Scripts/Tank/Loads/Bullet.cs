@@ -13,12 +13,11 @@ namespace simpleproject.Tank.Loads.Bullets
         [SerializeField] private Rigidbody2D _bulletRigidBody;
         [SerializeField] private TransitionManager _transitionManager;
         [SerializeField] private int _loadId;
-        [SerializeField] private int _bulletSpeed;
+        [SerializeField] private float _bulletSpeed;
 
         private void Awake()
         {
             _parent = this.transform.parent;
-            Debug.Log(this.transform);
             _poolManager = GetComponentInParent<LoadsPoolManager>();
             _transitionManager = GameObject.Find("Managers").GetComponent<TransitionManager>();
         }
@@ -29,12 +28,13 @@ namespace simpleproject.Tank.Loads.Bullets
                 _transitionManager.ForceTransition(_bulletTransform, _bulletRigidBody, _bulletSpeed, 1.0f);
         }
 
-        public override void Use(Transform _towerTranform)
+        public override void Use(Transform _towerTransform)
         {
             _bulletTransform.SetParent(null);
             this.gameObject.SetActive(true);
 
-            _bulletTransform = _towerTranform;
+            _bulletTransform.eulerAngles = _towerTransform.eulerAngles;
+            _bulletTransform.position = _towerTransform.position;
         }
 
         protected override void ReturnToThePool()

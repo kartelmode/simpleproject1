@@ -586,7 +586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tankTransition: {fileID: 2043406251}
-  _tankTransform: {fileID: 2043406250}
+  _towerTransform: {fileID: 603456119}
   _bodyRotation: {fileID: 74096357}
   _poolManager: {fileID: 1330116295}
   _tankParameters: {fileID: 2043406252}

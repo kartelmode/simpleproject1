@@ -90,7 +90,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5410465908544879414
 Transform:
   m_ObjectHideFlags: 0
@@ -99,8 +99,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5410465908544879563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0895, y: -2.5772, z: -10.609375}
-  m_LocalScale: {x: 14.152862, y: 9.449721, z: 1}
+  m_LocalPosition: {x: -1.183, y: -1.689, z: -10.609375}
+  m_LocalScale: {x: 1.427256, y: 0.57139444, z: 1}
   m_Children:
   - {fileID: 5410465907126016994}
   m_Father: {fileID: 0}
@@ -119,7 +119,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.0001
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -189,11 +189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc99ae7f84b6ba048b2de8d894b34e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hideDeltaTime: 5
   _poolManager: {fileID: 0}
   _bulletTransform: {fileID: 5410465908544879414}
   _parent: {fileID: 0}
   _bulletRigidBody: {fileID: 5410465908544879413}
   _transitionManager: {fileID: 0}
   _loadId: 0
-  _bulletSpeed: 5
-  _hideDeltaTime: 5
+  _bulletSpeed: 0.5

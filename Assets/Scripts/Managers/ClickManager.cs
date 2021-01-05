@@ -9,7 +9,7 @@ namespace simpleproject.Managers.Clicks
     public class ClickManager : MonoBehaviour
     {
         [SerializeField] private TankTransition _tankTransition;
-        [SerializeField] private Transform _tankTransform;
+        [SerializeField] private Transform _towerTransform;
         [SerializeField] private BodyRotation _bodyRotation;
         [SerializeField] private LoadsPoolManager _poolManager;
         [SerializeField] private TankParameters _tankParameters;
@@ -27,7 +27,7 @@ namespace simpleproject.Managers.Clicks
         private void CheckShot()
         {
             if (Input.GetKeyDown(KeyCode.Space))
-                _poolManager.Shot(_tankParameters.TypeOfGun, _tankTransform);
+                _poolManager.Shot(_tankParameters.TypeOfGun, _towerTransform);
         }
 
         private void Update()

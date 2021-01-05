@@ -14,12 +14,12 @@ namespace simpleproject.Managers.Pools.Loads
         [SerializeField] private GameObject[] _prefabs;
         [SerializeField] protected TransitionManager _transitionManager;
 
-        private readonly List<Stack<GameObject>> _freeLoads = new List<Stack<GameObject>>();
-        private readonly Stack<GameObject> _emptyStack = new Stack<GameObject>();
+        private readonly List<Queue<GameObject>> _freeLoads = new List<Queue<GameObject>>();
+        private readonly Queue<GameObject> _emptyStack = new Queue<GameObject>();
 
         public void AddFreeLoad(int Id, GameObject Load)
         {
-            _freeLoads[Id].Push(Load);
+            _freeLoads[Id].Enqueue(Load);
         }
 
         private void Awake()
@@ -30,7 +30,13 @@ namespace simpleproject.Managers.Pools.Loads
                 _freeLoads.Add(_emptyStack);
 
                 for (int loadId = 0; loadId < _poolSize[id]; loadId++)
-                    _freeLoads[id].Push(Instantiate(_prefabs[id], this.transform));
+                {
+                    GameObject load = Instantiate(_prefabs[id], this.transform);
+
+                    load.SetActive(false);
+
+                    _freeLoads[id].Enqueue(load);
+                }
             }
         }
 
@@ -39,7 +45,7 @@ namespace simpleproject.Managers.Pools.Loads
             PoolableObject Load;
 
             if (_freeLoads[Id].Count > 0)
-                Load = _freeLoads[Id].Pop().GetComponent<PoolableObject>();
+                Load = _freeLoads[Id].Dequeue().GetComponent<PoolableObject>();
             else
                 if (_canExpand[Id])
                     Load = Instantiate(_prefabs[Id], this.transform).GetComponent<PoolableObject>();
